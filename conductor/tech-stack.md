@@ -14,5 +14,8 @@
 - **Environment:** Local CLI and filesystem.
 
 ## Application Logic
-- **Language:** Python 3.9+
-- **Libraries:** `argparse` (standard library), `json` (standard library), `datetime` (standard library).
+- **Backend:** Python 3.9+ with FastAPI
+- **Frontend:** Next.js (TypeScript, React, Tailwind CSS)
+- **Key Libraries:** 
+    - **Backend:** `uvicorn`, `pydantic`
+    - **Frontend:** `shadcn/ui` (patterns)

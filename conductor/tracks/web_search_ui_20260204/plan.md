@@ -4,7 +4,7 @@
 - [x] Task: Refactor `search.py` to be importable without side effects [c598688]
 - [x] Task: Initialize FastAPI application and basic health check endpoint [6e3f861]
 - [x] Task: Implement `/search` endpoint to wrap existing keyword and date filtering logic [f52003e]
-- [ ] Task: Implement `/conversations/{uuid}` endpoint to retrieve full conversation details
+- [x] Task: Implement `/conversations/{uuid}` endpoint to retrieve full conversation details [dcba5da]
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Frontend Scaffolding and Core UI

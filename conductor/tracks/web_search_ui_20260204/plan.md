@@ -7,12 +7,12 @@
 - [x] Task: Implement `/conversations/{uuid}` endpoint to retrieve full conversation details [dcba5da]
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) [7c7a223]
 
-## Phase 2: Frontend Scaffolding and Core UI
+## Phase 2: Frontend Scaffolding and Core UI [checkpoint: fead050]
 - [x] Task: Initialize Next.js project with Tailwind CSS and shadcn/ui [863b62b]
 - [x] Task: Create the main layout with a centered search interface [241d051]
 - [x] Task: Implement the "Command Palette" search input component [7e4e8a2]
 - [x] Task: Implement interactive result cards for displaying conversation summaries [6a18411]
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [fead050]
 
 ## Phase 3: Live Search and Integration
 - [ ] Task: Connect frontend search input to the FastAPI `/search` endpoint

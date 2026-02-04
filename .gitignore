@@ -7,3 +7,5 @@ __pycache__/
 .pytest_cache/
 .coverage
 htmlcov/
+GEMINI.md
+*.json

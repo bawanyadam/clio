@@ -21,7 +21,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [9606df8]
 
 ## Phase 4: Detail View and Polishing
-- [ ] Task: Implement navigation/expansion logic to show full message history for a result
+- [x] Task: Implement navigation/expansion logic to show full message history for a result [53d4e3d]
 - [ ] Task: Add "Copy to Clipboard" quick actions for UUID and summary
 - [ ] Task: Final UI/UX polishing for that "slick but minimal" vibe
 - [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)

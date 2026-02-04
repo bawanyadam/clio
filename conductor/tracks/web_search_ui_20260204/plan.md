@@ -20,8 +20,8 @@
 - [x] Task: Implement the date range picker and integrate with search API [216e9a7]
 - [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [9606df8]
 
-## Phase 4: Detail View and Polishing
+## Phase 4: Detail View and Polishing [checkpoint: 33dea21]
 - [x] Task: Implement navigation/expansion logic to show full message history for a result [53d4e3d]
 - [x] Task: Add "Copy to Clipboard" quick actions for UUID and summary [ddc2913]
 - [x] Task: Final UI/UX polishing for that "slick but minimal" vibe [d6f44ef]
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md) [33dea21]

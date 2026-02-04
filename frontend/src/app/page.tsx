@@ -2,6 +2,23 @@
 
 import { useState } from "react";
 import SearchInput from "@/components/SearchInput";
+import ConversationCard from "@/components/ConversationCard";
+
+// Mock data for initial UI development
+const MOCK_RESULTS = [
+  {
+    uuid: "1",
+    name: "Higher dimensions in Three-Body Problem",
+    summary: "Discussion about sophons and higher-dimensional weapons in Cixin Liu's series.",
+    created_at: "2026-02-02T23:42:03Z",
+  },
+  {
+    uuid: "2",
+    name: "Delaware C Corp tax filing",
+    summary: "Guidance on tax requirements for startups with no revenue.",
+    created_at: "2026-01-31T19:30:00Z",
+  }
+];
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -20,9 +37,14 @@ export default function Home() {
         
         <SearchInput value={query} onChange={setQuery} />
 
-        {/* Results Container Placeholder */}
         <div className="w-full flex flex-col gap-4">
-          {/* We'll add result cards here in the next task */}
+          {MOCK_RESULTS.map((result) => (
+            <ConversationCard 
+              key={result.uuid}
+              {...result}
+              onClick={() => console.log("Clicked:", result.uuid)}
+            />
+          ))}
         </div>
       </main>
     </div>

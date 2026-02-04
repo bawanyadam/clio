@@ -50,6 +50,57 @@ def search_keyword(data: List[Dict[str, Any]], query: str) -> List[Dict[str, Any
             
     return results
 
+def get_snippet(text: str, query: str, context_chars: int = 40) -> str:
+    """Create a snippet of text around the query."""
+    lower_text = text.lower()
+    start_idx = lower_text.find(query.lower())
+    if start_idx == -1:
+        return text[:context_chars * 2] + "..."
+    
+    snippet_start = max(0, start_idx - context_chars)
+    snippet_end = min(len(text), start_idx + len(query) + context_chars)
+    
+    prefix = "..." if snippet_start > 0 else ""
+    suffix = "..." if snippet_end < len(text) else ""
+    
+    return prefix + text[snippet_start:snippet_end] + suffix
+
+def search_keyword_enhanced(data: List[Dict[str, Any]], query: str) -> List[Dict[str, Any]]:
+    """
+    Search for a keyword and return results grouped by conversation,
+    including specific message matches and snippets.
+    """
+    query_lower = query.lower()
+    results = []
+    
+    for conv in data:
+        matches = []
+        
+        # Check messages for occurrences
+        for msg in conv.get("chat_messages", []):
+            text = msg.get("text", "")
+            if query_lower in text.lower():
+                matches.append({
+                    "message_uuid": msg.get("uuid"),
+                    "text": text,
+                    "context": get_snippet(text, query),
+                    "created_at": msg.get("created_at")
+                })
+        
+        # If matches found in messages, or if the keyword is in the title/summary
+        # (even if no specific message matches, though usually there will be)
+        if matches or query_lower in conv.get("name", "").lower() or query_lower in conv.get("summary", "").lower():
+            # Add conversation data plus matches
+            result_conv = conv.copy()
+            # Remove chat_messages from results to keep it lean? 
+            # Actually, the API might need them, but for the search result list, matches are enough.
+            # But the spec says "Update the /search endpoint to return specific message UUIDs and context snippets"
+            # We'll include 'matches' field.
+            result_conv["matches"] = matches
+            results.append(result_conv)
+            
+    return results
+
 def get_conversation_by_uuid(data: List[Dict[str, Any]], uuid: str) -> Optional[Dict[str, Any]]:
     """Retrieve a single conversation by its UUID."""
     for conv in data:

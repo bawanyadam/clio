@@ -10,3 +10,6 @@ __pycache__/
 htmlcov/
 GEMINI.md
 *.json
+api.log
+frontend/fe.log
+frontend/fe_direct.log

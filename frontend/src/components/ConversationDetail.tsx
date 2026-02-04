@@ -40,8 +40,19 @@ export default function ConversationDetail({ conversation, onClose }: Conversati
         </div>
         
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          <div className="bg-zinc-50 rounded-xl p-4 border border-zinc-100 dark:bg-zinc-950/50 dark:border-zinc-800">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Summary</h3>
+          <div className="bg-zinc-50 rounded-xl p-4 border border-zinc-100 dark:bg-zinc-950/50 dark:border-zinc-800 relative group">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Summary</h3>
+              <button 
+                onClick={() => navigator.clipboard.writeText(conversation.summary)}
+                title="Copy Summary"
+                className="opacity-0 group-hover:opacity-100 p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-all"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+              </button>
+            </div>
             <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">{conversation.summary}</p>
           </div>
 

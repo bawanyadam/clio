@@ -4,9 +4,9 @@
 - [x] Task: Update `search.py` logic to return individual message matches [87d64a8]
     - [x] Write Tests
     - [x] Implement occurrence tracking and context snippets
-- [ ] Task: Enhance `/search` endpoint schema
-    - [ ] Write Tests
-    - [ ] Update FastAPI response model to group results by conversation with message metadata
+- [x] Task: Enhance `/search` endpoint schema [8753ac0]
+    - [x] Write Tests
+    - [x] Update FastAPI response model to group results by conversation with message metadata
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Filter UI Refinement

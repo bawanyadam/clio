@@ -35,5 +35,34 @@ class TestAPI(unittest.TestCase):
         mock_keyword.assert_called_once()
         mock_filter.assert_called_once()
 
+    @patch("search.load_conversations")
+    @patch("search.get_conversation_by_uuid")
+    def test_get_conversation_endpoint(self, mock_get, mock_load):
+        """Test the /conversations/{uuid} endpoint."""
+        from api import app
+        mock_load.return_value = [{"uuid": "1"}]
+        mock_get.return_value = {"uuid": "1", "name": "Test"}
+        
+        client = TestClient(app)
+        response = client.get("/conversations/1")
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"uuid": "1", "name": "Test"})
+        
+        mock_get.assert_called_once()
+
+    @patch("search.load_conversations")
+    @patch("search.get_conversation_by_uuid")
+    def test_get_conversation_not_found(self, mock_get, mock_load):
+        """Test the /conversations/{uuid} endpoint returns 404 when not found."""
+        from api import app
+        mock_load.return_value = []
+        mock_get.return_value = None
+        
+        client = TestClient(app)
+        response = client.get("/conversations/nonexistent")
+        
+        self.assertEqual(response.status_code, 404)
+
 if __name__ == '__main__':
     unittest.main()

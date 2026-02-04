@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, HTTPException
 from typing import Optional, List
 import search
 
@@ -18,7 +18,7 @@ def search_conversations(
     try:
         data = search.load_conversations(file)
     except FileNotFoundError:
-        return {"error": "File not found"}
+        raise HTTPException(status_code=404, detail="File not found")
 
     results = data
     if query:
@@ -27,3 +27,16 @@ def search_conversations(
         results = search.filter_by_date(results, start, end)
         
     return results
+
+@app.get("/conversations/{uuid}")
+def get_conversation(uuid: str, file: str = "conversations.json"):
+    try:
+        data = search.load_conversations(file)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="File not found")
+        
+    conversation = search.get_conversation_by_uuid(data, uuid)
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+        
+    return conversation

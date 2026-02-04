@@ -210,6 +210,7 @@ export default function Home() {
               <div key={result.uuid} className="animate-in fade-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: `${(index % RESULTS_PER_PAGE) * 30}ms` }}>
                 <ConversationCard 
                   {...result}
+                  defaultExpanded={!!query}
                   onClick={() => handleSelectConversation(result.uuid)}
                   onMatchClick={(msgUuid) => handleSelectConversation(result.uuid, msgUuid)}
                 />

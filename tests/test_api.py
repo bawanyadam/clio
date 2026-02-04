@@ -16,7 +16,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(response.json(), {"status": "ok"})
 
     @patch("search.load_conversations")
-    @patch("search.search_keyword")
+    @patch("search.search_keyword_enhanced")
     @patch("search.filter_by_date")
     def test_search_endpoint(self, mock_filter, mock_keyword, mock_load):
         """Test the /search endpoint calls the correct logic."""

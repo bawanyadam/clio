@@ -1,4 +1,4 @@
-# Track web_search_ui_20260204 Context
+# Track enhanced_search_20260204 Context
 
 - [Specification](./spec.md)
 - [Implementation Plan](./plan.md)

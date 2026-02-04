@@ -33,10 +33,9 @@ def search_conversations(
     if query:
         # Use the enhanced search logic for keyword queries
         results = search.search_keyword_enhanced(results, query)
-    else:
-        # If no query, we might still want to filter by date
-        if start or end:
-            results = search.filter_by_date(results, start, end)
+    
+    if start or end:
+        results = search.filter_by_date(results, start, end)
         
     return results
 

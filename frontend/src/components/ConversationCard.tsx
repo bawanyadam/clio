@@ -15,6 +15,7 @@ interface ConversationCardProps {
   summary: string;
   created_at: string;
   matches?: Match[];
+  defaultExpanded?: boolean;
   onClick: () => void;
   onMatchClick?: (messageUuid: string) => void;
 }
@@ -25,10 +26,11 @@ export default function ConversationCard({
   summary, 
   created_at, 
   matches = [], 
+  defaultExpanded = false,
   onClick,
   onMatchClick
 }: ConversationCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const formattedDate = new Date(created_at).toLocaleDateString();
 
   const handleCopy = (e: MouseEvent, text: string) => {

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useEffect } from "react";
+
 interface Message {
   uuid: string;
   text: string;
@@ -22,6 +24,21 @@ interface ConversationDetailProps {
 }
 
 export default function ConversationDetail({ conversation, targetMessageUuid, onClose }: ConversationDetailProps) {
+  const messageRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    if (targetMessageUuid && messageRefs.current[targetMessageUuid]) {
+      // Add a small delay to ensure the modal animation has started
+      const timer = setTimeout(() => {
+        messageRefs.current[targetMessageUuid]?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [targetMessageUuid, conversation]);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/20 backdrop-blur-sm dark:bg-black/40 animate-in fade-in duration-300">
       <div className="w-full max-w-3xl max-h-[80vh] flex flex-col bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden dark:bg-zinc-900 dark:border-zinc-800 animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
@@ -60,12 +77,16 @@ export default function ConversationDetail({ conversation, targetMessageUuid, on
           <div className="space-y-4">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Messages</h3>
             {conversation.chat_messages?.map((msg) => (
-              <div key={msg.uuid} className={`flex flex-col ${msg.sender === 'human' ? 'items-end' : 'items-start'}`}>
-                <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${
+              <div 
+                key={msg.uuid} 
+                ref={(el) => { messageRefs.current[msg.uuid] = el; }}
+                className={`flex flex-col ${msg.sender === 'human' ? 'items-end' : 'items-start'}`}
+              >
+                <div className={`max-w-[85%] p-4 rounded-2xl text-sm transition-all duration-1000 ${
                   msg.sender === 'human' 
                     ? 'bg-zinc-900 text-white dark:bg-zinc-50 dark:text-zinc-950' 
                     : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200'
-                }`}>
+                } ${targetMessageUuid === msg.uuid ? 'ring-4 ring-zinc-400/30 dark:ring-zinc-500/30 ring-offset-2 dark:ring-offset-zinc-900 animate-pulse' : ''}`}>
                   <p className="whitespace-pre-wrap leading-relaxed">{msg.text}</p>
                 </div>
                 <span className="text-[10px] text-zinc-400 mt-1 px-2">

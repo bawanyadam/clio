@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+from datetime import datetime, timezone
 
 def load_conversations(file_path):
     """Load conversations from a JSON file."""
@@ -36,6 +37,46 @@ def search_keyword(data, query):
         if found_in_messages:
             results.append(conv)
             
+    return results
+
+def parse_date(date_str):
+    """Parse a date string into a datetime object."""
+    if not date_str:
+        return None
+    try:
+        # Support YYYY-MM-DD
+        if len(date_str) == 10:
+            return datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        # Support ISO format from JSON
+        return datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+    except ValueError:
+        return None
+
+def filter_by_date(data, start_date=None, end_date=None):
+    """Filter conversations by date range."""
+    start = parse_date(start_date)
+    # If end_date is YYYY-MM-DD, make it end of day
+    end = parse_date(end_date)
+    if end and len(end_date) == 10:
+        end = end.replace(hour=23, minute=59, second=59)
+        
+    results = []
+    for conv in data:
+        conv_date_str = conv.get("created_at")
+        if not conv_date_str:
+            continue
+            
+        conv_date = parse_date(conv_date_str)
+        if not conv_date:
+            continue
+            
+        if start and conv_date < start:
+            continue
+        if end and conv_date > end:
+            continue
+            
+        results.append(conv)
+        
     return results
 
 def main():

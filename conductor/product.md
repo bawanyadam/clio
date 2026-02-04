@@ -16,7 +16,7 @@ The primary user is the individual owner of the data (Adam Goehrig-Bawany), who 
 - **Privacy & Control:** Keep all sensitive personal and business data strictly local to the user's environment.
 
 ## Key Features (Prioritized)
-- **Advanced Search:** Modern web interface supporting deep keyword search with contextual navigation, message-level highlighting, and date filtering.
+- **Advanced Search & Browsing:** Modern web interface for browsing the entire archive with deep keyword search, contextual navigation, and date filtering. Includes global archive statistics and auto-expanded matches.
 - **Data Consolidation:** A single source of truth for diverse data types (conversations, health, business context).
 - **Metadata Management:** Structured storage of interaction summaries, UUIDs, and timestamps for every entry.
 

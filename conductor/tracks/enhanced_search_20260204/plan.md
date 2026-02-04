@@ -24,10 +24,10 @@
     - [x] Display snippets and match counts
 - [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [2422fbf]
 
-## Phase 4: Contextual Navigation & Highlighting
-- [ ] Task: Implement deep-link scrolling in `ConversationDetail`
-    - [ ] Add `ref` tracking for individual messages
-    - [ ] Implement smooth scroll-into-view logic when a match is selected
-- [ ] Task: Add visual highlight pulse
-    - [ ] Create a temporary CSS animation for the target message background
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+## Phase 4: Contextual Navigation & Highlighting [checkpoint: 950bd13]
+- [x] Task: Implement deep-link scrolling in `ConversationDetail` [950bd13]
+    - [x] Add `ref` tracking for individual messages
+    - [x] Implement smooth scroll-into-view logic when a match is selected
+- [x] Task: Add visual highlight pulse [950bd13]
+    - [x] Create a temporary CSS animation for the target message background
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md) [950bd13]

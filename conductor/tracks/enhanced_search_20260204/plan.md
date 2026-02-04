@@ -1,0 +1,33 @@
+# Implementation Plan: Enhanced Search and Contextual Navigation
+
+## Phase 1: Backend API Enhancements
+- [x] Task: Update `search.py` logic to return individual message matches [87d64a8]
+    - [x] Write Tests
+    - [x] Implement occurrence tracking and context snippets
+- [ ] Task: Enhance `/search` endpoint schema
+    - [ ] Write Tests
+    - [ ] Update FastAPI response model to group results by conversation with message metadata
+- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+
+## Phase 2: Filter UI Refinement
+- [ ] Task: Implement Filter Button and Popover component
+    - [ ] Create the UI component using shadcn/ui patterns
+    - [ ] Migrate date range pickers into the popover state
+- [ ] Task: Refactor search page state for \"Neutral\" initial load
+    - [ ] Ensure filters are hidden and inactive by default
+- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+
+## Phase 3: Deep Search Result Cards
+- [ ] Task: Enhance `ConversationCard` with expansion logic
+    - [ ] Implement toggle state for viewing multiple matches
+- [ ] Task: Render occurrence list within `ConversationCard`
+    - [ ] Display snippets and match counts
+- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+
+## Phase 4: Contextual Navigation & Highlighting
+- [ ] Task: Implement deep-link scrolling in `ConversationDetail`
+    - [ ] Add `ref` tracking for individual messages
+    - [ ] Implement smooth scroll-into-view logic when a match is selected
+- [ ] Task: Add visual highlight pulse
+    - [ ] Create a temporary CSS animation for the target message background
+- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, MouseEvent } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 
 interface Match {
   message_uuid: string;
@@ -32,6 +32,10 @@ export default function ConversationCard({
 }: ConversationCardProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const formattedDate = new Date(created_at).toLocaleDateString();
+
+  useEffect(() => {
+    setIsExpanded(defaultExpanded);
+  }, [defaultExpanded]);
 
   const handleCopy = (e: MouseEvent, text: string) => {
     e.stopPropagation();

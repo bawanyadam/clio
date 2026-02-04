@@ -1,7 +1,8 @@
 # GEMINI.md
 
 ## Directory Overview
-This directory, `ClaudeJSON`, functions as a structured data repository for AI interaction history, user profiles, project definitions, and long-term memory. It appears to be a local storage format for a system that mirrors or manages Claude-like interactions, organizing them into machine-readable JSON files.
+This directory, `clio`, functions as a structured data repository for AI interaction history, user profiles, project definitions, and long-term memory.
+ It appears to be a local storage format for a system that mirrors or manages Claude-like interactions, organizing them into machine-readable JSON files.
 
 ## Key Files
 - **`conversations.json`**: Contains a history of detailed AI conversations. Each entry includes a UUID, a descriptive name, and a comprehensive summary of the topics discussed (e.g., science fiction analysis, personal health data tracking, business compliance).

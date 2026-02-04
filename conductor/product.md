@@ -2,10 +2,10 @@
 
 I'd like to create a simple interface for being able to search through conversations.json
 
-# Product Definition - ClaudeJSON
+# Product Definition - clio
 
 ## Vision & Purpose
-ClaudeJSON serves as a personal, high-privacy structured data repository. Its core purpose is to act as a "second brain" for the user, archiving AI interaction history, personal memories, and project-specific documentation in a machine-readable format.
+clio serves as a personal, high-privacy structured data repository. Its core purpose is to act as a "second brain" for the user, archiving AI interaction history, personal memories, and project-specific documentation in a machine-readable format.
 
 ## Target Audience
 The primary user is the individual owner of the data (Adam Goehrig-Bawany), who requires a centralized and private way to track personal history, health metrics, and business-related AI interactions.

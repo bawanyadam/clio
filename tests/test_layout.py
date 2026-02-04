@@ -15,10 +15,10 @@ class TestLayout(unittest.TestCase):
             self.assertIn("max-w-", content, "Layout does not seem to have a max-width container")
 
     def test_search_title(self):
-        """Verify that the page has the ClaudeJSON Search title."""
+        """Verify that the page has the clio title."""
         with open("frontend/src/app/page.tsx", "r") as f:
             content = f.read()
-            self.assertIn("ClaudeJSON Search", content, "Page title 'ClaudeJSON Search' not found")
+            self.assertIn("clio", content, "Page title 'clio' not found")
 
 if __name__ == '__main__':
     unittest.main()

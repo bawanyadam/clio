@@ -145,7 +145,7 @@ export default function Home() {
       <main className="flex w-full max-w-2xl flex-col items-center gap-8 py-20 px-4">
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-4xl font-bold tracking-tight">
-            ClaudeJSON Search
+            clio
           </h1>
           {stats && (
             <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-2">

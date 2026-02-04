@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, List
 import search
 
-app = FastAPI(title="ClaudeJSON API")
+app = FastAPI(title="clio API")
 
 app.add_middleware(
     CORSMiddleware,

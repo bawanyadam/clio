@@ -1,4 +1,4 @@
-# Tech Stack - ClaudeJSON
+# Tech Stack - clio
 
 ## Data Storage & Format
 - **Format:** Structured JSON (JavaScript Object Notation).

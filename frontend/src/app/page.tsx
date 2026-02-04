@@ -13,15 +13,26 @@ interface Conversation {
 
 export default function Home() {
   const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [results, setResults] = useState<Conversation[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Debounce logic
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  // Fetch logic triggered by debounced query
   useEffect(() => {
     const fetchResults = async () => {
       setIsLoading(true);
       try {
         const url = new URL("http://localhost:8000/search");
-        if (query) url.searchParams.append("query", query);
+        if (debouncedQuery) url.searchParams.append("query", debouncedQuery);
         
         const response = await fetch(url.toString());
         if (!response.ok) throw new Error("Search failed");
@@ -36,7 +47,7 @@ export default function Home() {
     };
 
     fetchResults();
-  }, [query]);
+  }, [debouncedQuery]);
 
   return (
     <div className="flex min-h-screen flex-col items-center bg-zinc-50 dark:bg-zinc-950">

@@ -14,11 +14,11 @@
 - [x] Task: Implement interactive result cards for displaying conversation summaries [6a18411]
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [fead050]
 
-## Phase 3: Live Search and Integration
+## Phase 3: Live Search and Integration [checkpoint: 9606df8]
 - [x] Task: Connect frontend search input to the FastAPI `/search` endpoint [d581ab0]
 - [x] Task: Implement dynamic result updates as the user types (with debouncing) [e7e7888]
 - [x] Task: Implement the date range picker and integrate with search API [216e9a7]
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [9606df8]
 
 ## Phase 4: Detail View and Polishing
 - [ ] Task: Implement navigation/expansion logic to show full message history for a result

@@ -13,12 +13,20 @@ interface Message {
   created_at: string;
 }
 
+interface Match {
+  message_uuid: string;
+  text: string;
+  context: string;
+  created_at: string;
+}
+
 interface Conversation {
   uuid: string;
   name: string;
   summary: string;
   created_at: string;
   chat_messages?: Message[];
+  matches?: Match[];
 }
 
 export default function Home() {
@@ -30,6 +38,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
   const [isFetchingDetail, setIsFetchingDetail] = useState(false);
+  const [targetMessageUuid, setTargetMessageUuid] = useState<string | null>(null);
 
   // Debounce logic
   useEffect(() => {
@@ -43,7 +52,6 @@ export default function Home() {
   // Fetch logic for search
   useEffect(() => {
     const fetchResults = async () => {
-      // Don't fetch if everything is empty (neutral state)
       if (!debouncedQuery && !startDate && !endDate) {
         setResults([]);
         setIsLoading(false);
@@ -72,8 +80,9 @@ export default function Home() {
     fetchResults();
   }, [debouncedQuery, startDate, endDate]);
 
-  const handleSelectConversation = async (uuid: string) => {
+  const handleSelectConversation = async (uuid: string, messageUuid: string | null = null) => {
     setIsFetchingDetail(true);
+    setTargetMessageUuid(messageUuid);
     try {
       const response = await fetch(`http://localhost:8000/conversations/${uuid}`);
       if (!response.ok) throw new Error("Failed to fetch conversation details");
@@ -156,6 +165,7 @@ export default function Home() {
               <ConversationCard 
                 {...result}
                 onClick={() => handleSelectConversation(result.uuid)}
+                onMatchClick={(msgUuid) => handleSelectConversation(result.uuid, msgUuid)}
               />
             </div>
           ))}
@@ -166,7 +176,11 @@ export default function Home() {
       {selectedConversation && (
         <ConversationDetail 
           conversation={selectedConversation as any} 
-          onClose={() => setSelectedConversation(null)} 
+          targetMessageUuid={targetMessageUuid}
+          onClose={() => {
+            setSelectedConversation(null);
+            setTargetMessageUuid(null);
+          }} 
         />
       )}
 

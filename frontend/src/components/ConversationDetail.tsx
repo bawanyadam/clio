@@ -17,10 +17,11 @@ interface Conversation {
 
 interface ConversationDetailProps {
   conversation: Conversation;
+  targetMessageUuid?: string | null;
   onClose: () => void;
 }
 
-export default function ConversationDetail({ conversation, onClose }: ConversationDetailProps) {
+export default function ConversationDetail({ conversation, targetMessageUuid, onClose }: ConversationDetailProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/20 backdrop-blur-sm dark:bg-black/40 animate-in fade-in duration-300">
       <div className="w-full max-w-3xl max-h-[80vh] flex flex-col bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden dark:bg-zinc-900 dark:border-zinc-800 animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">

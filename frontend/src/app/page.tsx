@@ -1,27 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchInput from "@/components/SearchInput";
 import ConversationCard from "@/components/ConversationCard";
 
-// Mock data for initial UI development
-const MOCK_RESULTS = [
-  {
-    uuid: "1",
-    name: "Higher dimensions in Three-Body Problem",
-    summary: "Discussion about sophons and higher-dimensional weapons in Cixin Liu's series.",
-    created_at: "2026-02-02T23:42:03Z",
-  },
-  {
-    uuid: "2",
-    name: "Delaware C Corp tax filing",
-    summary: "Guidance on tax requirements for startups with no revenue.",
-    created_at: "2026-01-31T19:30:00Z",
-  }
-];
+interface Conversation {
+  uuid: string;
+  name: string;
+  summary: string;
+  created_at: string;
+}
 
 export default function Home() {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<Conversation[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchResults = async () => {
+      setIsLoading(true);
+      try {
+        const url = new URL("http://localhost:8000/search");
+        if (query) url.searchParams.append("query", query);
+        
+        const response = await fetch(url.toString());
+        if (!response.ok) throw new Error("Search failed");
+        
+        const data = await response.json();
+        setResults(data);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchResults();
+  }, [query]);
 
   return (
     <div className="flex min-h-screen flex-col items-center bg-zinc-50 dark:bg-zinc-950">
@@ -38,7 +53,17 @@ export default function Home() {
         <SearchInput value={query} onChange={setQuery} />
 
         <div className="w-full flex flex-col gap-4">
-          {MOCK_RESULTS.map((result) => (
+          {isLoading && (
+            <div className="text-center py-10 text-zinc-400 animate-pulse">
+              Searching...
+            </div>
+          )}
+          {!isLoading && results.length === 0 && (
+            <div className="text-center py-10 text-zinc-400">
+              No results found.
+            </div>
+          )}
+          {!isLoading && results.map((result) => (
             <ConversationCard 
               key={result.uuid}
               {...result}

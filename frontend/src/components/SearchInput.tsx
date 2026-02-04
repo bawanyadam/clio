@@ -1,11 +1,27 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 interface SearchInputProps {
   value: string;
   onChange: (value: string) => void;
 }
 
 export default function SearchInput({ value, onChange }: SearchInputProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <div className="w-full">
       <div className="relative group">
@@ -15,15 +31,16 @@ export default function SearchInput({ value, onChange }: SearchInputProps) {
           </svg>
         </div>
         <input
+          ref={inputRef}
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="block w-full p-4 pl-10 text-sm text-zinc-900 border border-zinc-200 rounded-xl bg-white focus:ring-2 focus:ring-zinc-200 focus:border-zinc-400 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-50 dark:focus:ring-zinc-800 transition-all shadow-sm"
+          className="block w-full p-4 pl-10 text-sm text-zinc-900 border border-zinc-200 rounded-xl bg-white focus:ring-2 focus:ring-zinc-200 focus:border-zinc-400 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-50 dark:focus:ring-zinc-800 transition-all shadow-sm outline-none"
           placeholder="Search conversations..."
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-          <kbd className="hidden sm:inline-block px-2 py-1 text-xs font-semibold text-zinc-400 bg-zinc-100 border border-zinc-200 rounded dark:bg-zinc-800 dark:border-zinc-700">
-            ⌘K
+          <kbd className="hidden sm:inline-block px-2 py-1 text-xs font-semibold text-zinc-400 bg-zinc-100 border border-zinc-200 rounded dark:bg-zinc-800 dark:border-zinc-700 uppercase">
+            {typeof navigator !== "undefined" && navigator.platform.indexOf("Mac") !== -1 ? "⌘K" : "Ctrl+K"}
           </kbd>
         </div>
       </div>

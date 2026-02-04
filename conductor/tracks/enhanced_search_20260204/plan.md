@@ -9,13 +9,13 @@
     - [x] Update FastAPI response model to group results by conversation with message metadata
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) [1ea367c]
 
-## Phase 2: Filter UI Refinement
-- [ ] Task: Implement Filter Button and Popover component
-    - [ ] Create the UI component using shadcn/ui patterns
-    - [ ] Migrate date range pickers into the popover state
-- [ ] Task: Refactor search page state for \"Neutral\" initial load
-    - [ ] Ensure filters are hidden and inactive by default
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+## Phase 2: Filter UI Refinement [checkpoint: d0919fc]
+- [x] Task: Implement Filter Button and Popover component [d0919fc]
+    - [x] Create the UI component using shadcn/ui patterns
+    - [x] Migrate date range pickers into the popover state
+- [x] Task: Refactor search page state for "Neutral" initial load [d0919fc]
+    - [x] Ensure filters are hidden and inactive by default
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [d0919fc]
 
 ## Phase 3: Deep Search Result Cards
 - [ ] Task: Enhance `ConversationCard` with expansion logic

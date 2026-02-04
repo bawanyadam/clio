@@ -1,1 +1,25 @@
-# Initial Concept\n\nI'd like to create a simple interface for being able to search through conversations.json\n\n# Product Definition - ClaudeJSON\n\n## Vision & Purpose\nClaudeJSON serves as a personal, high-privacy structured data repository. Its core purpose is to act as a "second brain" for the user, archiving AI interaction history, personal memories, and project-specific documentation in a machine-readable format.\n\n## Target Audience\nThe primary user is the individual owner of the data (Adam Goehrig-Bawany), who requires a centralized and private way to track personal history, health metrics, and business-related AI interactions.\n\n## Core Goals\n- **Permanent Archiving:** Maintain a complete and searchable history of AI conversations to prevent information loss across different platforms.\n- **Efficient Retrieval:** Enable the user to quickly find specific past decisions, information, or insights from their historical data.\n- **Privacy & Control:** Keep all sensitive personal and business data strictly local to the user's environment.\n\n## Key Features (Prioritized)\n- **Advanced Search:** Robust filtering and search capabilities across `conversations.json`, `memories.json`, and other repository files.\n- **Data Consolidation:** A single source of truth for diverse data types (conversations, health, business context).\n- **Metadata Management:** Structured storage of interaction summaries, UUIDs, and timestamps for every entry.\n\n## Success Criteria\n- The user can retrieve any specific conversation or memory within seconds.\n- The data remains fully contained within the local filesystem.
+# Initial Concept
+
+I'd like to create a simple interface for being able to search through conversations.json
+
+# Product Definition - ClaudeJSON
+
+## Vision & Purpose
+ClaudeJSON serves as a personal, high-privacy structured data repository. Its core purpose is to act as a "second brain" for the user, archiving AI interaction history, personal memories, and project-specific documentation in a machine-readable format.
+
+## Target Audience
+The primary user is the individual owner of the data (Adam Goehrig-Bawany), who requires a centralized and private way to track personal history, health metrics, and business-related AI interactions.
+
+## Core Goals
+- **Permanent Archiving:** Maintain a complete and searchable history of AI conversations to prevent information loss across different platforms.
+- **Efficient Retrieval:** Enable the user to quickly find specific past decisions, information, or insights from their historical data.
+- **Privacy & Control:** Keep all sensitive personal and business data strictly local to the user's environment.
+
+## Key Features (Prioritized)
+- **Advanced Search:** Python-based CLI tool supporting keyword and date-range searches across `conversations.json`.
+- **Data Consolidation:** A single source of truth for diverse data types (conversations, health, business context).
+- **Metadata Management:** Structured storage of interaction summaries, UUIDs, and timestamps for every entry.
+
+## Success Criteria
+- The user can retrieve any specific conversation or memory within seconds.
+- The data remains fully contained within the local filesystem.

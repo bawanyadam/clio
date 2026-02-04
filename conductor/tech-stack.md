@@ -1,1 +1,18 @@
-# Tech Stack - ClaudeJSON\n\n## Data Storage & Format\n- **Format:** Structured JSON (JavaScript Object Notation).\n- **Storage:** Local filesystem-based flat files.\n- **Key Files:\n    - `conversations.json`: AI interaction history.\n    - `memories.json`: Personal long-term memory store.\n    - `users.json`: User profile data.\n    - `projects.json`: Project definitions and documentation.\n\n## Operating Environment\n- **OS:** Darwin (MacOS).\n- **Environment:** Local CLI and filesystem.\n\n## Future Tech (Proposed)\n- **Search Tool:** To be determined (likely Python or Node.js for JSON processing).
+# Tech Stack - ClaudeJSON
+
+## Data Storage & Format
+- **Format:** Structured JSON (JavaScript Object Notation).
+- **Storage:** Local filesystem-based flat files.
+- **Key Files:
+    - `conversations.json`: AI interaction history.
+    - `memories.json`: Personal long-term memory store.
+    - `users.json`: User profile data.
+    - `projects.json`: Project definitions and documentation.
+
+## Operating Environment
+- **OS:** Darwin (MacOS).
+- **Environment:** Local CLI and filesystem.
+
+## Application Logic
+- **Language:** Python 3.9+
+- **Libraries:** `argparse` (standard library), `json` (standard library), `datetime` (standard library).

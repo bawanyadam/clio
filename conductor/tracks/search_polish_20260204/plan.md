@@ -6,11 +6,11 @@
 - [x] Task: Add an `/archive/stats` endpoint to return total counts and date ranges [a1b8f94]
 - [x] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md) [c2fba2c]
 
-## Phase 2: Frontend Load State & Pagination
-- [ ] Task: Refactor `page.tsx` to fetch and display the initial conversation list on mount
-- [ ] Task: Implement "Load More" functionality for paginated results
-- [ ] Task: Create and integrate the Archive Metadata Header showing total counts and dates
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+## Phase 2: Frontend Load State & Pagination [checkpoint: 84e5874]
+- [x] Task: Refactor `page.tsx` to fetch and display the initial conversation list on mount [84e5874]
+- [x] Task: Implement "Load More" functionality for paginated results [84e5874]
+- [x] Task: Create and integrate the Archive Metadata Header showing total counts and dates [84e5874]
+- [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [84e5874]
 
 ## Phase 3: Search Result Visibility & Logic
 - [ ] Task: Update `ConversationCard` to allow a `defaultExpanded` prop

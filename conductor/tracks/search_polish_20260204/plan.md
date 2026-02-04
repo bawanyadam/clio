@@ -13,7 +13,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [84e5874]
 
 ## Phase 3: Search Result Visibility & Logic
-- [ ] Task: Update `ConversationCard` to allow a `defaultExpanded` prop
+- [x] Task: Update `ConversationCard` to allow a `defaultExpanded` prop [b85f55a]
 - [ ] Task: Implement logic in `page.tsx` to auto-expand all results when a keyword query is active
 - [ ] Task: Refine "Clear all" button placement and visual feedback
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)

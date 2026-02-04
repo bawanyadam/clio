@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SearchInput from "@/components/SearchInput";
 import ConversationCard from "@/components/ConversationCard";
 import ConversationDetail from "@/components/ConversationDetail";
+import FilterPopover from "@/components/FilterPopover";
 
 interface Message {
   uuid: string;
@@ -42,6 +43,13 @@ export default function Home() {
   // Fetch logic for search
   useEffect(() => {
     const fetchResults = async () => {
+      // Don't fetch if everything is empty (neutral state)
+      if (!debouncedQuery && !startDate && !endDate) {
+        setResults([]);
+        setIsLoading(false);
+        return;
+      }
+
       setIsLoading(true);
       try {
         const url = new URL("http://localhost:8000/search");
@@ -79,6 +87,12 @@ export default function Home() {
     }
   };
 
+  const clearAllFilters = () => {
+    setQuery("");
+    setStartDate("");
+    setEndDate("");
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center bg-zinc-50 dark:bg-zinc-950">
       <main className="flex w-full max-w-2xl flex-col items-center gap-8 py-20 px-4">
@@ -92,36 +106,30 @@ export default function Home() {
         </div>
         
         <div className="w-full space-y-4">
-          <SearchInput value={query} onChange={setQuery} />
-          
-          <div className="flex gap-4 items-center justify-center text-sm">
-            <div className="flex items-center gap-2">
-              <label className="text-zinc-400">From</label>
-              <input 
-                type="date" 
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="bg-white border border-zinc-200 rounded-lg px-2 py-1 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-50 outline-none focus:border-zinc-400 transition-colors"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <label className="text-zinc-400">To</label>
-              <input 
-                type="date" 
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="bg-white border border-zinc-200 rounded-lg px-2 py-1 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-50 outline-none focus:border-zinc-400 transition-colors"
-              />
-            </div>
-            {(startDate || endDate || query) && (
-              <button 
-                onClick={() => { setQuery(""); setStartDate(""); setEndDate(""); }}
-                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 ml-2 font-medium"
-              >
-                Clear
-              </button>
-            )}
+          <div className="flex gap-2 items-center">
+            <SearchInput value={query} onChange={setQuery} />
+            <FilterPopover 
+              startDate={startDate}
+              endDate={endDate}
+              onStartDateChange={setStartDate}
+              onEndDateChange={setEndDate}
+              onClear={() => { setStartDate(""); setEndDate(""); }}
+            />
           </div>
+          
+          {(query || startDate || endDate) && (
+            <div className="flex justify-center">
+              <button 
+                onClick={clearAllFilters}
+                className="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors flex items-center gap-1"
+              >
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Clear all active searches
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="w-full flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -130,11 +138,19 @@ export default function Home() {
               Searching...
             </div>
           )}
-          {!isLoading && results.length === 0 && (
+          
+          {!isLoading && results.length === 0 && (query || startDate || endDate) && (
             <div className="text-center py-10 text-zinc-400 animate-in fade-in duration-700">
               No results found.
             </div>
           )}
+
+          {!isLoading && !query && !startDate && !endDate && (
+            <div className="text-center py-20 text-zinc-300 dark:text-zinc-700 italic border-2 border-dashed border-zinc-100 dark:border-zinc-900 rounded-3xl">
+              Type to begin searching your archive
+            </div>
+          )}
+
           {!isLoading && results.map((result, index) => (
             <div key={result.uuid} className="animate-in fade-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: `${index * 50}ms` }}>
               <ConversationCard 

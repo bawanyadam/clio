@@ -1,8 +1,0 @@
-{
-  "track_id": "search_tool_20260204",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-02-04T09:15:00Z",
-  "updated_at": "2026-02-04T09:15:00Z",
-  "description": "Build a Python-based CLI tool to perform keyword and date-range searches across conversations.json"
-}

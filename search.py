@@ -89,8 +89,42 @@ def filter_by_date(data, start_date=None, end_date=None):
         
     return results
 
+def display_results(results):
+    """Format and display search results."""
+    if not results:
+        print("No results found.")
+        return
+
+    print(f"Found {len(results)} results:\n")
+    for conv in results:
+        print(f"--- {conv.get('name', 'Unnamed')} ---")
+        print(f"UUID: {conv.get('uuid')}")
+        print(f"Date: {conv.get('created_at')}")
+        print(f"Summary: {conv.get('summary', 'No summary available.')}")
+        print("-" * (len(conv.get('name', 'Unnamed')) + 8))
+        print()
+
 def main():
-    print("Search tool initialized.")
+    args = parse_args()
+    
+    try:
+        data = load_conversations(args.file)
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        return
+    except json.JSONDecodeError:
+        print(f"Error: Failed to parse JSON in {args.file}")
+        return
+
+    results = data
+    
+    if args.query:
+        results = search_keyword(results, args.query)
+        
+    if args.start or args.end:
+        results = filter_by_date(results, args.start, args.end)
+        
+    display_results(results)
 
 if __name__ == "__main__":
     main()

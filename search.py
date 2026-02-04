@@ -3,6 +3,7 @@ import json
 import os
 import argparse
 from datetime import datetime, timezone
+from typing import List, Optional, Dict, Any
 
 def parse_args():
     """Parse CLI arguments."""
@@ -13,7 +14,7 @@ def parse_args():
     parser.add_argument("--file", default="conversations.json", help="Path to conversations.json")
     return parser.parse_args()
 
-def load_conversations(file_path):
+def load_conversations(file_path: str) -> List[Dict[str, Any]]:
     """Load conversations from a JSON file."""
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
@@ -21,7 +22,7 @@ def load_conversations(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def search_keyword(data, query):
+def search_keyword(data: List[Dict[str, Any]], query: str) -> List[Dict[str, Any]]:
     """Search for a keyword in conversation names, summaries, and messages."""
     query = query.lower()
     results = []
@@ -49,7 +50,14 @@ def search_keyword(data, query):
             
     return results
 
-def parse_date(date_str):
+def get_conversation_by_uuid(data: List[Dict[str, Any]], uuid: str) -> Optional[Dict[str, Any]]:
+    """Retrieve a single conversation by its UUID."""
+    for conv in data:
+        if conv.get("uuid") == uuid:
+            return conv
+    return None
+
+def parse_date(date_str: Optional[str]) -> Optional[datetime]:
     """Parse a date string into a datetime object."""
     if not date_str:
         return None
@@ -62,12 +70,12 @@ def parse_date(date_str):
     except ValueError:
         return None
 
-def filter_by_date(data, start_date=None, end_date=None):
+def filter_by_date(data: List[Dict[str, Any]], start_date: Optional[str] = None, end_date: Optional[str] = None) -> List[Dict[str, Any]]:
     """Filter conversations by date range."""
     start = parse_date(start_date)
     # If end_date is YYYY-MM-DD, make it end of day
     end = parse_date(end_date)
-    if end and len(end_date) == 10:
+    if end and end_date and len(end_date) == 10:
         end = end.replace(hour=23, minute=59, second=59)
         
     results = []
@@ -89,7 +97,7 @@ def filter_by_date(data, start_date=None, end_date=None):
         
     return results
 
-def display_results(results):
+def display_results(results: List[Dict[str, Any]]) -> None:
     """Format and display search results."""
     if not results:
         print("No results found.")

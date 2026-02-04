@@ -237,6 +237,7 @@ export default function Home() {
         <ConversationDetail 
           conversation={selectedConversation as any} 
           targetMessageUuid={targetMessageUuid}
+          query={query}
           onClose={() => {
             setSelectedConversation(null);
             setTargetMessageUuid(null);

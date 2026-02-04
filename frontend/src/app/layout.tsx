@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "clio",
   description: "A minimalist interface for your conversation archive.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

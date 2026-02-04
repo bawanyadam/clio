@@ -12,5 +12,5 @@
 
 ## Phase 3: CLI Interface and Formatting
 - [x] Task: Implement CLI argument parsing (argparse) [d028dcc]
-- [ ] Task: Format and display search results in the terminal
+- [x] Task: Format and display search results in the terminal [75f6e1f]
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)

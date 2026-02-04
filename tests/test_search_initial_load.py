@@ -33,5 +33,17 @@ class TestSearchInitialLoad(unittest.TestCase):
         # Ensure they are different
         self.assertNotEqual(resp1.json()[0]["uuid"], resp2.json()[0]["uuid"])
 
+    def test_archive_stats(self):
+        """Test that /archive/stats returns correct metadata."""
+        from api import app
+        client = TestClient(app)
+        response = client.get("/archive/stats")
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertIn("total_count", data)
+        self.assertIn("start_date", data)
+        self.assertIn("end_date", data)
+        self.assertGreater(data["total_count"], 0)
+
 if __name__ == '__main__':
     unittest.main()

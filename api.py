@@ -47,6 +47,25 @@ def search_conversations(
     
     return paginated_results
 
+@app.get("/archive/stats")
+def get_archive_stats(file: str = "conversations.json"):
+    try:
+        data = search.load_conversations(file)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="File not found")
+        
+    if not data:
+        return {"total_count": 0, "start_date": None, "end_date": None}
+        
+    # Get sorted dates to find range
+    dates = sorted([conv.get("created_at") for conv in data if conv.get("created_at")])
+    
+    return {
+        "total_count": len(data),
+        "start_date": dates[0] if dates else None,
+        "end_date": dates[-1] if dates else None
+    }
+
 @app.get("/conversations/{uuid}")
 def get_conversation(uuid: str, file: str = "conversations.json"):
     try:

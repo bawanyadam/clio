@@ -59,3 +59,9 @@ npm run dev
 - **Backend:** FastAPI (Python)
 - **Frontend:** Next.js, Tailwind CSS, shadcn/ui patterns
 - **Data:** Local JSON files
+
+## Screenshots
+
+![Search results view](screenshots/1.png)
+![Conversation detail view](screenshots/2.png)
+![Date filter view](screenshots/3.png)

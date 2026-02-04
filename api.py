@@ -22,12 +22,17 @@ def search_conversations(
     query: Optional[str] = None,
     start: Optional[str] = None,
     end: Optional[str] = None,
+    limit: int = 50,
+    offset: int = 0,
     file: str = "conversations.json"
 ):
     try:
         data = search.load_conversations(file)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
+
+    # Default sort: newest first
+    data.sort(key=lambda x: x.get("created_at", ""), reverse=True)
 
     results = data
     if query:
@@ -37,7 +42,10 @@ def search_conversations(
     if start or end:
         results = search.filter_by_date(results, start, end)
         
-    return results
+    # Apply pagination
+    paginated_results = results[offset : offset + limit]
+    
+    return paginated_results
 
 @app.get("/conversations/{uuid}")
 def get_conversation(uuid: str, file: str = "conversations.json"):

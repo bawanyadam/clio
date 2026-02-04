@@ -124,23 +124,24 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col gap-4">
+        <div className="w-full flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
           {isLoading && (
             <div className="text-center py-10 text-zinc-400 animate-pulse">
               Searching...
             </div>
           )}
           {!isLoading && results.length === 0 && (
-            <div className="text-center py-10 text-zinc-400">
+            <div className="text-center py-10 text-zinc-400 animate-in fade-in duration-700">
               No results found.
             </div>
           )}
-          {!isLoading && results.map((result) => (
-            <ConversationCard 
-              key={result.uuid}
-              {...result}
-              onClick={() => handleSelectConversation(result.uuid)}
-            />
+          {!isLoading && results.map((result, index) => (
+            <div key={result.uuid} className="animate-in fade-in slide-in-from-bottom-2 duration-300" style={{ animationDelay: `${index * 50}ms` }}>
+              <ConversationCard 
+                {...result}
+                onClick={() => handleSelectConversation(result.uuid)}
+              />
+            </div>
           ))}
         </div>
       </main>

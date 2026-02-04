@@ -157,13 +157,6 @@ export default function Home() {
         <div className="w-full space-y-4">
           <div className="flex gap-2 items-center">
             <SearchInput value={query} onChange={setQuery} />
-            <FilterPopover 
-              startDate={startDate}
-              endDate={endDate}
-              onStartDateChange={(v) => { setStartDate(v); setOffset(0); }}
-              onEndDateChange={(v) => { setEndDate(v); setOffset(0); }}
-              onClear={() => { setStartDate(""); setEndDate(""); setOffset(0); }}
-            />
           </div>
           
           {isFiltered && (
@@ -182,15 +175,24 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-col gap-4">
-          <div className="flex justify-between items-end px-1">
-            <h2 className="text-xs font-bold uppercase tracking-tighter text-zinc-400">
-              {isFiltered ? "Filtered Results" : "All Conversations"}
-            </h2>
-            {isFiltered && !isLoading && (
-              <span className="text-[10px] text-zinc-400 font-medium">
-                {results.length} found
-              </span>
-            )}
+          <div className="flex justify-between items-center px-1 mb-2">
+            <div className="flex items-baseline gap-2">
+              <h2 className="text-xs font-bold uppercase tracking-tighter text-zinc-400">
+                {isFiltered ? "Filtered Results" : "All Conversations"}
+              </h2>
+              {isFiltered && !isLoading && (
+                <span className="text-[10px] text-zinc-400 font-medium">
+                  {results.length} found
+                </span>
+              )}
+            </div>
+            <FilterPopover 
+              startDate={startDate}
+              endDate={endDate}
+              onStartDateChange={(v) => { setStartDate(v); setOffset(0); }}
+              onEndDateChange={(v) => { setEndDate(v); setOffset(0); }}
+              onClear={() => { setStartDate(""); setEndDate(""); setOffset(0); }}
+            />
           </div>
 
           <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">

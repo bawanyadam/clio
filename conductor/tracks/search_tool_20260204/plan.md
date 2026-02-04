@@ -7,7 +7,7 @@
 
 ## Phase 2: Search Logic
 - [x] Task: Implement keyword search across names, summaries, and messages [8af906f]
-- [ ] Task: Implement date-range filtering logic
+- [x] Task: Implement date-range filtering logic [a2339fa]
 - [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: CLI Interface and Formatting

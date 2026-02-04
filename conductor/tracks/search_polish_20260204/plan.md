@@ -3,7 +3,7 @@
 ## Phase 1: API & Data Loading Enhancements
 - [x] Task: Update `/search` endpoint to handle empty queries by returning all conversations [8dc2352]
 - [x] Task: Implement pagination parameters (`limit`, `offset`) in the search API [8dc2352]
-- [ ] Task: Add an `/archive/stats` endpoint to return total counts and date ranges
+- [x] Task: Add an `/archive/stats` endpoint to return total counts and date ranges [a1b8f94]
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Frontend Load State & Pagination

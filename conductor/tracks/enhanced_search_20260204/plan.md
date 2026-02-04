@@ -17,12 +17,12 @@
     - [x] Ensure filters are hidden and inactive by default
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [d0919fc]
 
-## Phase 3: Deep Search Result Cards
-- [ ] Task: Enhance `ConversationCard` with expansion logic
-    - [ ] Implement toggle state for viewing multiple matches
-- [ ] Task: Render occurrence list within `ConversationCard`
-    - [ ] Display snippets and match counts
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+## Phase 3: Deep Search Result Cards [checkpoint: 2422fbf]
+- [x] Task: Enhance `ConversationCard` with expansion logic [2422fbf]
+    - [x] Implement toggle state for viewing multiple matches
+- [x] Task: Render occurrence list within `ConversationCard` [2422fbf]
+    - [x] Display snippets and match counts
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) [2422fbf]
 
 ## Phase 4: Contextual Navigation & Highlighting
 - [ ] Task: Implement deep-link scrolling in `ConversationDetail`

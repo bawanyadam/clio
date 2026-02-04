@@ -1,6 +1,7 @@
 import unittest
 import sys
 import os
+from unittest.mock import patch
 from fastapi.testclient import TestClient
 
 sys.path.append(os.getcwd())
@@ -13,6 +14,26 @@ class TestAPI(unittest.TestCase):
         response = client.get("/health")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"status": "ok"})
+
+    @patch("search.load_conversations")
+    @patch("search.search_keyword")
+    @patch("search.filter_by_date")
+    def test_search_endpoint(self, mock_filter, mock_keyword, mock_load):
+        """Test the /search endpoint calls the correct logic."""
+        from api import app
+        mock_load.return_value = [{"uuid": "1"}]
+        mock_keyword.return_value = [{"uuid": "1"}]
+        mock_filter.return_value = [{"uuid": "1"}]
+        
+        client = TestClient(app)
+        response = client.get("/search?query=test&start=2026-01-01")
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), [{"uuid": "1"}])
+        
+        mock_load.assert_called_once()
+        mock_keyword.assert_called_once()
+        mock_filter.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()

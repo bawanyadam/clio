@@ -15,7 +15,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md) [fead050]
 
 ## Phase 3: Live Search and Integration
-- [ ] Task: Connect frontend search input to the FastAPI `/search` endpoint
+- [x] Task: Connect frontend search input to the FastAPI `/search` endpoint [d581ab0]
 - [ ] Task: Implement dynamic result updates as the user types (with debouncing)
 - [ ] Task: Implement the date range picker and integrate with search API
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)

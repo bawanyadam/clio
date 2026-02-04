@@ -9,7 +9,7 @@
 
 ## Phase 2: Frontend Scaffolding and Core UI
 - [x] Task: Initialize Next.js project with Tailwind CSS and shadcn/ui [863b62b]
-- [ ] Task: Create the main layout with a centered search interface
+- [x] Task: Create the main layout with a centered search interface [241d051]
 - [ ] Task: Implement the "Command Palette" search input component
 - [ ] Task: Implement interactive result cards for displaying conversation summaries
 - [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)

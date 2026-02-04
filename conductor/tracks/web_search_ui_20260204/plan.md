@@ -22,6 +22,6 @@
 
 ## Phase 4: Detail View and Polishing
 - [x] Task: Implement navigation/expansion logic to show full message history for a result [53d4e3d]
-- [ ] Task: Add "Copy to Clipboard" quick actions for UUID and summary
+- [x] Task: Add "Copy to Clipboard" quick actions for UUID and summary [ddc2913]
 - [ ] Task: Final UI/UX polishing for that "slick but minimal" vibe
 - [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)

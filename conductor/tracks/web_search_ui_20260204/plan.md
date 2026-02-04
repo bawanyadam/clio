@@ -17,7 +17,7 @@
 ## Phase 3: Live Search and Integration
 - [x] Task: Connect frontend search input to the FastAPI `/search` endpoint [d581ab0]
 - [x] Task: Implement dynamic result updates as the user types (with debouncing) [e7e7888]
-- [ ] Task: Implement the date range picker and integrate with search API
+- [x] Task: Implement the date range picker and integrate with search API [216e9a7]
 - [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: Detail View and Polishing

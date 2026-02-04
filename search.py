@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
 import json
 import os
+import argparse
 from datetime import datetime, timezone
+
+def parse_args():
+    """Parse CLI arguments."""
+    parser = argparse.ArgumentParser(description="Search through conversations.json")
+    parser.add_argument("--query", "-q", help="Keyword to search for")
+    parser.add_argument("--start", help="Start date (YYYY-MM-DD)")
+    parser.add_argument("--end", help="End date (YYYY-MM-DD)")
+    parser.add_argument("--file", default="conversations.json", help="Path to conversations.json")
+    return parser.parse_args()
 
 def load_conversations(file_path):
     """Load conversations from a JSON file."""

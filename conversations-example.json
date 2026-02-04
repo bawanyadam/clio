@@ -1,0 +1,44 @@
+[
+  {
+    "uuid": "d309e988-e819-4f06-90b4-c6633de1da75",
+    "name": "Higher dimensions in Three-Body Problem",
+    "summary": "A deep dive into the science fiction trilogy \"The Three-Body Problem\" by Liu Cixin, focusing on higher-dimensional physics, dimensional warfare, and the cosmic sociology of the dark forest.",
+    "created_at": "2026-02-02T23:42:03.970969Z",
+    "updated_at": "2026-02-02T23:52:56.844421Z",
+    "chat_messages": [
+      {
+        "uuid": "019c20bc-182e-736f-82d6-ca6b78fccb65",
+        "text": "What is the higher dimensional stuff in 3 body problem?",
+        "sender": "human",
+        "created_at": "2026-02-02T23:42:04.890920Z"
+      },
+      {
+        "uuid": "019c20bc-182e-7630-9eea-46dd7227613e",
+        "text": "The main elements include Sophons (protons unfolded into higher dimensions), dimensional weapons that can flatten space, and the history of the universe as a process of dimensional reduction caused by ancient cosmic warfare.",
+        "sender": "assistant",
+        "created_at": "2026-02-02T23:42:17.665299Z"
+      }
+    ]
+  },
+  {
+    "uuid": "109d5fba-6a66-41d6-abe0-9fda15a5e263",
+    "name": "Delaware C Corp tax filing requirements",
+    "summary": "Discussion about federal and state tax obligations for a Delaware C corp with no revenue, including Form 1120 and the March 1st Delaware Franchise Tax deadline.",
+    "created_at": "2026-01-31T19:30:00.470062Z",
+    "updated_at": "2026-01-31T19:31:14.377034Z",
+    "chat_messages": [
+      {
+        "uuid": "019c1588-9bfe-7d71-9938-3304bc8abd89",
+        "text": "What taxes do I need to file for Delaware C Corp for a startup that has made no money?",
+        "sender": "human",
+        "created_at": "2026-01-31T19:30:01.232185Z"
+      },
+      {
+        "uuid": "019c1588-9bfe-7fbb-8a6f-9b17c31a740e",
+        "text": "Even with no revenue, you must file Federal Form 1120 and Delaware's Annual Franchise Tax and Annual Report by March 1st.",
+        "sender": "assistant",
+        "created_at": "2026-01-31T19:30:14.204034Z"
+      }
+    ]
+  }
+]

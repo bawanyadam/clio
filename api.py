@@ -2,8 +2,20 @@ from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, List
 import search
+import os
 
 app = FastAPI(title="clio API")
+
+DEFAULT_FILE = "conversations.json"
+EXAMPLE_FILE = "conversations-example.json"
+
+def get_data_file(requested_file: str) -> str:
+    """Determine which data file to use, with fallback to example."""
+    if os.path.exists(requested_file):
+        return requested_file
+    if requested_file == DEFAULT_FILE and os.path.exists(EXAMPLE_FILE):
+        return EXAMPLE_FILE
+    return requested_file
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,10 +36,11 @@ def search_conversations(
     end: Optional[str] = None,
     limit: int = 50,
     offset: int = 0,
-    file: str = "conversations.json"
+    file: str = DEFAULT_FILE
 ):
+    target_file = get_data_file(file)
     try:
-        data = search.load_conversations(file)
+        data = search.load_conversations(target_file)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
 
@@ -48,9 +61,10 @@ def search_conversations(
     return paginated_results
 
 @app.get("/archive/stats")
-def get_archive_stats(file: str = "conversations.json"):
+def get_archive_stats(file: str = DEFAULT_FILE):
+    target_file = get_data_file(file)
     try:
-        data = search.load_conversations(file)
+        data = search.load_conversations(target_file)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
         
@@ -67,9 +81,10 @@ def get_archive_stats(file: str = "conversations.json"):
     }
 
 @app.get("/conversations/{uuid}")
-def get_conversation(uuid: str, file: str = "conversations.json"):
+def get_conversation(uuid: str, file: str = DEFAULT_FILE):
+    target_file = get_data_file(file)
     try:
-        data = search.load_conversations(file)
+        data = search.load_conversations(target_file)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="File not found")
         

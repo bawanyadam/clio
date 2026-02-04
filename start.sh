@@ -31,7 +31,7 @@ cd ..
 
 # 4. Start Backend API in background
 echo -e "${BLUE}Starting API server...${NC}"
-./venv/bin/uvicorn api:app --port 8000 > /dev/null 2>&1 &
+./venv/bin/python3 -m uvicorn api:app --port 8000 > /dev/null 2>&1 &
 API_PID=$!
 
 # 5. Start Frontend in background

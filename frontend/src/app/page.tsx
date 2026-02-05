@@ -180,10 +180,10 @@ export default function Home() {
 
   const isFiltered = query || startDate || endDate;
   const themeButtonClass = (mode: ThemeMode) =>
-    `flex h-8 w-8 items-center justify-center rounded-lg border transition-all ${
+    `flex h-8 w-8 items-center justify-center text-zinc-500 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-700 ${
       themeMode === mode
-        ? "bg-zinc-100 border-zinc-300 text-zinc-900 dark:bg-zinc-800 dark:border-zinc-700 dark:text-zinc-50"
-        : "bg-white border-zinc-200 text-zinc-500 hover:border-zinc-300 dark:bg-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-700"
+        ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50"
+        : "hover:bg-zinc-100/70 dark:hover:bg-zinc-900"
     }`;
 
   return (
@@ -233,39 +233,46 @@ export default function Home() {
               )}
             </div>
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => setThemeMode("light")}
-                className={themeButtonClass("light")}
-                aria-label="Use light theme"
-                title="Light"
-                type="button"
-              >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05 5.636 5.636m12.728 0L16.95 7.05M7.05 16.95l-1.414 1.414M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setThemeMode("dark")}
-                className={themeButtonClass("dark")}
-                aria-label="Use dark theme"
-                title="Dark"
-                type="button"
-              >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1 1 11.21 3c-.19.6-.29 1.24-.29 1.9A7.9 7.9 0 0 0 18.1 13c.66 0 1.3-.1 1.9-.29Z" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setThemeMode("system")}
-                className={themeButtonClass("system")}
-                aria-label="Use system theme"
-                title="System"
-                type="button"
-              >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v8A2.5 2.5 0 0 1 18.5 16h-5v2h2.5a1 1 0 1 1 0 2h-8a1 1 0 1 1 0-2h2.5v-2h-5A2.5 2.5 0 0 1 3 13.5v-8Z" />
-                </svg>
-              </button>
+              <div className="inline-flex items-center overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+                <button
+                  onClick={() => setThemeMode("light")}
+                  className={themeButtonClass("light")}
+                  aria-label="Use light theme"
+                  aria-pressed={themeMode === "light"}
+                  title="Light"
+                  type="button"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M7.05 7.05 5.636 5.636m12.728 0L16.95 7.05M7.05 16.95l-1.414 1.414M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+                  </svg>
+                </button>
+                <div className="h-8 w-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
+                <button
+                  onClick={() => setThemeMode("dark")}
+                  className={themeButtonClass("dark")}
+                  aria-label="Use dark theme"
+                  aria-pressed={themeMode === "dark"}
+                  title="Dark"
+                  type="button"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1 1 11.21 3c-.19.6-.29 1.24-.29 1.9A7.9 7.9 0 0 0 18.1 13c.66 0 1.3-.1 1.9-.29Z" />
+                  </svg>
+                </button>
+                <div className="h-8 w-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
+                <button
+                  onClick={() => setThemeMode("system")}
+                  className={themeButtonClass("system")}
+                  aria-label="Use system theme"
+                  aria-pressed={themeMode === "system"}
+                  title="System"
+                  type="button"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v8A2.5 2.5 0 0 1 18.5 16h-5v2h2.5a1 1 0 1 1 0 2h-8a1 1 0 1 1 0-2h2.5v-2h-5A2.5 2.5 0 0 1 3 13.5v-8Z" />
+                  </svg>
+                </button>
+              </div>
               <FilterPopover 
                 startDate={startDate}
                 endDate={endDate}

@@ -62,6 +62,6 @@ npm run dev
 
 ## Screenshots
 
-![Search results view](screenshots/1.png?v=1)
-![Conversation detail view](screenshots/2.png?v=1)
-![Date filter view](screenshots/3.png?v=1)
+![Search results view](screenshots/a.png?v=1)
+![Conversation detail view](screenshots/b.png?v=1)
+![Date filter view](screenshots/c.png?v=1)

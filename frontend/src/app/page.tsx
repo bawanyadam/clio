@@ -234,6 +234,10 @@ export default function Home() {
         </div>
       </main>
 
+      <footer className="w-full pt-0 pb-4 text-center text-[10px] lowercase tracking-[0.2em] text-zinc-400">
+        {"\u00A9"} {new Date().getFullYear()} adam goehrig-bawany
+      </footer>
+
       {/* Detail View Overlay */}
       {selectedConversation && (
         <ConversationDetail 
